@@ -32,10 +32,14 @@
         android:label="@string/tasks"
         tools:layout="@layout/tasks_fragment" />
     <fragment
-        android:id="@+id/vcruFragment"
-        android:name="label.dev.lifelinetimer.view.fragments.vcrunews.VcruNewsFragment"
+        android:id="@+id/newsFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.vcrunews.NewsFragment"
         android:label="@string/vsru"
-        tools:layout="@layout/vcrnews_fragment" />
+        tools:layout="@layout/vcrnews_fragment" >
+        <action
+            android:id="@+id/action_newsFragment_to_newsDetails"
+            app:destination="@id/newsDetails" />
+    </fragment>
     <fragment
         android:id="@+id/notesDetailsFragment"
         android:name="label.dev.lifelinetimer.view.fragments.notes.NoteAddFragment"
@@ -56,5 +60,17 @@
         <argument
             android:name="selectedItem"
             app:argType="label.dev.lifelinetimer.model.models.dbmodels.NoteModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetails"
+        android:name="label.dev.lifelinetimer.view.fragments.vcrunews.NewsDetails"
+        android:label="newsdetails_fragment"
+        tools:layout="@layout/newsdetails_fragment" >
+        <action
+            android:id="@+id/action_newsDetails_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <argument
+            android:name="selectedNews"
+            app:argType="label.dev.lifelinetimer.model.models.apimodels.Article" />
     </fragment>
 </navigation>
