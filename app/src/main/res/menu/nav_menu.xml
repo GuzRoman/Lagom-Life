@@ -21,7 +21,7 @@
         android:title="@string/notes"/>
 
     <item
-        android:id="@+id/vcruFragment"
+        android:id="@+id/newsFragment"
         android:icon="@drawable/ic_vcru"
         android:title="@string/vsru"/>
 </menu>

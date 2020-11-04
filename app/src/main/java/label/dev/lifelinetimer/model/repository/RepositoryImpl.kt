@@ -1,17 +1,23 @@
 package label.dev.lifelinetimer.model.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import label.dev.lifelinetimer.model.api.NetService
 import label.dev.lifelinetimer.model.db.NotesDao
+import label.dev.lifelinetimer.model.models.apimodels.NewsModel
 import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.repository.interfaces.ApiRepository
 import label.dev.lifelinetimer.model.repository.interfaces.NotesDaoRepository
 import label.dev.lifelinetimer.model.repository.interfaces.MappersRepository
 import label.dev.lifelinetimer.model.repository.interfaces.TimeRepository
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class RepositoryImpl(private val notesDao: NotesDao) : NotesDaoRepository, TimeRepository,
-    MappersRepository {
+class RepositoryImpl(private val notesDao: NotesDao, private val netService: NetService) : NotesDaoRepository, TimeRepository,
+    MappersRepository, ApiRepository {
 
     //NoteDaoRepository
 
@@ -57,5 +63,17 @@ class RepositoryImpl(private val notesDao: NotesDao) : NotesDaoRepository, TimeR
         }
 
         return sortByDate
+    }
+
+    //ApiRepository
+
+    override suspend fun getNews(): LiveData<NewsModel> {
+        val responce = withContext(Dispatchers.IO) {
+            netService.
+            getAllStreetJornal()
+        }
+        val liveData = MutableLiveData<NewsModel>()
+        liveData.value = responce.body()
+        return liveData
     }
 }

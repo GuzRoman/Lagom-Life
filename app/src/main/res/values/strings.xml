@@ -9,4 +9,7 @@
     <string name="detailNoteSubtitleHint">Подзаголовок</string>
     <string name="noteEDHinteText">Текст</string>
     <string name="chooseTheMarkColor">Choose the mark color</string>
+    <string name="newsItemSubtitle">Subtitle</string>
+    <string name="newsItemTitle">Title</string>
+    <string name="newsItemContent">Content</string>
 </resources>
