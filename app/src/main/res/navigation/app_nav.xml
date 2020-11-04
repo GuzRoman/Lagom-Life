@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/routineFragment">
+    <fragment
+        android:id="@+id/routineFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.routine.RoutineFragment"
+        android:label="@string/routine"
+        tools:layout="@layout/routine_fragment" />
+    <fragment
+        android:id="@+id/lifestatsFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.lifestats.LifeStatsFragment"
+        android:label="@string/lifestats"
+        tools:layout="@layout/lifestats_fragment" />
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.notes.NotesFragment"
+        android:label="@string/notes"
+        tools:layout="@layout/notes_fragment" >
+        <action
+            android:id="@+id/action_notesFragment_to_notesDetailsFragment"
+            app:destination="@id/notesDetailsFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_noteRedactorFragment"
+            app:destination="@id/noteRedactorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.tasks.TasksFragment"
+        android:label="@string/tasks"
+        tools:layout="@layout/tasks_fragment" />
+    <fragment
+        android:id="@+id/vcruFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.vcrunews.VcruNewsFragment"
+        android:label="@string/vsru"
+        tools:layout="@layout/vcrnews_fragment" />
+    <fragment
+        android:id="@+id/notesDetailsFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.notes.NoteAddFragment"
+        android:label="notesdetails_fragment"
+        tools:layout="@layout/noteadd_fragment" >
+        <action
+            android:id="@+id/action_notesDetailsFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/noteRedactorFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.notes.NoteRedactorFragment"
+        android:label="noteredactor_fragment"
+        tools:layout="@layout/noteredactor_fragment" >
+        <action
+            android:id="@+id/action_noteRedactorFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <argument
+            android:name="selectedItem"
+            app:argType="label.dev.lifelinetimer.model.models.dbmodels.NoteModel" />
+    </fragment>
+</navigation>

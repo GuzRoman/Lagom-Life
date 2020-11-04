@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Life Line Timer</string>
+    <string name="routine">Routine</string>
+    <string name="tasks">Tasks</string>
+    <string name="lifestats">Stats</string>
+    <string name="notes">Notes</string>
+    <string name="vsru">News</string>
+    <string name="detailNoteTitleHint">Заголовок</string>
+    <string name="detailNoteSubtitleHint">Подзаголовок</string>
+    <string name="noteEDHinteText">Текст</string>
+    <string name="chooseTheMarkColor">Choose the mark color</string>
+</resources>

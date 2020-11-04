@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/theme_darkblue"
+    tools:context=".view.fragments.notes.NoteRedactorFragment">
+
+    <EditText
+        android:id="@+id/noteRedactorEDTitle"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_noteitem"
+        android:gravity="center"
+        android:hint="@string/detailNoteTitleHint"
+        android:padding="8dp"
+        android:textColor="@color/theme_whitegray"
+        android:textColorHint="@color/theme_whitegray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/noteRedactorEDSubtitle"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_noteitem"
+        android:gravity="center"
+        android:hint="@string/detailNoteSubtitleHint"
+        android:padding="8dp"
+        android:textColor="@color/theme_whitegray"
+        android:textColorHint="@color/theme_whitegray"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteRedactorEDTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/noteRedactorEDText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bg_mainstyle"
+        android:gravity="top"
+        android:hint="@string/noteEDHinteText"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteRedactorEDSubtitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/noteRedactorEditColorMark"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="WHITE"
+        android:textSize="0sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/cm_white"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/noteRedactorEDSubtitle"
+        app:layout_constraintEnd_toStartOf="@+id/noteRedactorDeleteBTN"
+        app:layout_constraintStart_toEndOf="@+id/noteRedactorEDSubtitle"
+        app:layout_constraintTop_toTopOf="@+id/noteRedactorEDSubtitle" />
+
+    <Button
+        android:id="@+id/noteRedactorSaveBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/theme_orange"
+        android:text="Save"
+        android:textColor="@color/theme_whitegray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/noteRedactorEDTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/noteRedactorEDTitle"
+        app:layout_constraintTop_toTopOf="@+id/noteRedactorEDTitle" />
+
+    <Button
+        android:id="@+id/noteRedactorDeleteBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/theme_orange"
+        android:gravity="center"
+        android:text="DEl"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/noteRedactorEditColorMark"
+        app:layout_constraintEnd_toEndOf="@+id/noteRedactorSaveBTN"
+        app:layout_constraintStart_toStartOf="@+id/noteRedactorSaveBTN"
+        app:layout_constraintTop_toTopOf="@+id/noteRedactorEditColorMark" />
+</androidx.constraintlayout.widget.ConstraintLayout>

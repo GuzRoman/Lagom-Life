@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/routineFragment"
+        android:icon="@drawable/ic_routine"
+        android:title="@string/routine"/>
+
+    <item
+        android:id="@+id/tasksFragment"
+        android:icon="@drawable/ic_tasks"
+        android:title="@string/tasks"/>
+
+    <item
+        android:id="@+id/lifestatsFragment"
+        android:icon="@drawable/ic_chart"
+        android:title="@string/lifestats"/>
+
+    <item
+        android:id="@+id/notesFragment"
+        android:icon="@drawable/ic_notes"
+        android:title="@string/notes"/>
+
+    <item
+        android:id="@+id/vcruFragment"
+        android:icon="@drawable/ic_vcru"
+        android:title="@string/vsru"/>
+</menu>

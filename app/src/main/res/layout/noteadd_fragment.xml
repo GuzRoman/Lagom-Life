@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.notes.NoteAddFragment"
+    android:background="@color/theme_darkblue">
+
+    <EditText
+        android:id="@+id/noteEDTitle"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_noteitem"
+        android:gravity="center"
+        android:hint="@string/detailNoteTitleHint"
+        android:padding="8dp"
+        android:textColor="@color/theme_whitegray"
+        android:textColorHint="@color/theme_whitegray"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/noteEDSubtitle"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_noteitem"
+        android:gravity="center"
+        android:hint="@string/detailNoteSubtitleHint"
+        android:padding="8dp"
+        android:textColor="@color/theme_whitegray"
+        android:textColorHint="@color/theme_whitegray"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteEDTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/noteEDText"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/bg_mainstyle"
+        android:gravity="top"
+        android:hint="@string/noteEDHinteText"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteEDSubtitle" />
+
+
+    <TextView
+        android:id="@+id/noteEditColorMark"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="WHITE"
+        android:textSize="0sp"
+        android:background="@drawable/cm_white"
+        android:clickable="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/noteEDSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/noteEDSubtitle"
+        app:layout_constraintTop_toTopOf="@+id/noteEDSubtitle" />
+
+    <Button
+        android:id="@+id/noteSaveBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/theme_orange"
+        android:text="Save"
+        android:textSize="15sp"
+        android:textColor="@color/theme_whitegray"
+        app:layout_constraintBottom_toBottomOf="@+id/noteEDTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/noteEDTitle"
+        app:layout_constraintTop_toTopOf="@+id/noteEDTitle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
