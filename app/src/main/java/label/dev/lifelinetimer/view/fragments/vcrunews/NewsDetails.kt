@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.newsdetails_fragment.view.*
 import label.dev.lifelinetimer.R
+import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.viewmodel.vcrunewsvm.NewsDetailsViewModel
 
 class NewsDetails : Fragment() {
@@ -24,11 +26,18 @@ class NewsDetails : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.newsdetails_fragment, container, false)
 
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
+
         view.newsDetailsTitle.text = args.selectedNews.title
         view.newsDetailsSubTitle.text = args.selectedNews.description
         Glide.with(requireContext()).load(args.selectedNews.urlToImage).into(view.newsDetailsImage)
 
     return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.VISIBLE
     }
 
 }

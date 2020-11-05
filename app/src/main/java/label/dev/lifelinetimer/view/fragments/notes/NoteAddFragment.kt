@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.noteadd_fragment.*
 import kotlinx.android.synthetic.main.noteadd_fragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.view.dialogs.ColorMarkDialogFragment
 import label.dev.lifelinetimer.viewmodel.notesvm.NoteAddViewModel
 
@@ -25,6 +26,8 @@ class NoteAddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.noteadd_fragment, container, false)
+
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
 
         noteAddViewModel = ViewModelProvider(this).get(NoteAddViewModel::class.java)
 
@@ -75,5 +78,9 @@ class NoteAddFragment : Fragment() {
         view?.noteEditColorMark?.setBackgroundResource(backGround)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.VISIBLE
+    }
 
 }

@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.noteredactor_fragment.*
 import kotlinx.android.synthetic.main.noteredactor_fragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.view.dialogs.ColorMarkDialogFragment
 import label.dev.lifelinetimer.viewmodel.notesvm.NoteRedactorViewModel
 
@@ -28,6 +29,8 @@ class NoteRedactorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.noteredactor_fragment, container, false)
+
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
 
         noteRedactorViewModel = ViewModelProvider(this).get(NoteRedactorViewModel::class.java)
 
@@ -93,8 +96,9 @@ class NoteRedactorFragment : Fragment() {
         return backGround
     }
 
-    private fun closeKeyBoard(){
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (requireActivity() as MainActivity).bottomNavigationView.visibility = View.VISIBLE
     }
 
 }
