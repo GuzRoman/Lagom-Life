@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.news_item.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.models.apimodels.Article
@@ -33,7 +34,11 @@ class NewsRecyclerViewAdapter: RecyclerView.Adapter<NewsRecyclerViewAdapter.News
         val article = news[position]
 
         holder.title.text = article.title
-        Glide.with(holder.itemView.context).load(article.urlToImage).into(holder.image)
+        Glide.with(holder.itemView.context)
+            .load(article.urlToImage)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
+            .into(holder.image)
 
         holder.itemView.newsRawLayout.setOnClickListener {
             val action = NewsFragmentDirections.actionNewsFragmentToNewsDetails(article)

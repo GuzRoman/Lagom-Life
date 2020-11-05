@@ -39,5 +39,4 @@ class NewsFragment : Fragment() {
             newsRecyclerViewAdapter.setData(list.articles)
         })
     }
-
 }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.newsdetails_fragment.view.*
 import label.dev.lifelinetimer.R
@@ -30,7 +31,11 @@ class NewsDetails : Fragment() {
 
         view.newsDetailsTitle.text = args.selectedNews.title
         view.newsDetailsSubTitle.text = args.selectedNews.description
-        Glide.with(requireContext()).load(args.selectedNews.urlToImage).into(view.newsDetailsImage)
+        Glide.with(requireContext())
+            .load(args.selectedNews.urlToImage)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .skipMemoryCache(true)
+            .into(view.newsDetailsImage)
 
     return view
     }
