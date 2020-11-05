@@ -19,8 +19,9 @@ class NewsViewModel(application: Application) : AndroidViewModel(application) {
     val newsData: MutableLiveData<NewsModel> = MutableLiveData()
 
     init {
-        val dao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repository = RepositoryImpl(dao, NetService())
+        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
+        val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
+        repository = RepositoryImpl(taskDao, noteDao, NetService())
         getData()
     }
 

@@ -1,6 +1,6 @@
 package label.dev.lifelinetimer.model.repository.interfaces
 
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 
 interface NotesDaoRepository {
 

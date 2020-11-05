@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.api.NetService
 import label.dev.lifelinetimer.model.db.DaoImpl
-import label.dev.lifelinetimer.model.models.dbmodels.ColorMarks
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.model.repository.RepositoryImpl
 
 class NoteRedactorViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,27 +17,28 @@ class NoteRedactorViewModel(application: Application) : AndroidViewModel(applica
     private val repositoryImpl: RepositoryImpl
 
     init {
+        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
         val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(noteDao, NetService())
+        repositoryImpl = RepositoryImpl(taskDao, noteDao, NetService())
     }
 
-    fun updateTime(): String{
+    fun updateTime(): String {
         return repositoryImpl.getCurrentTime()
     }
 
-    fun updateNote(note: NoteModel){
+    fun updateNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repositoryImpl.updateNote(note)
         }
     }
 
-    fun deleteNote(note: NoteModel){
+    fun deleteNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repositoryImpl.deleteNote(note)
         }
     }
 
-    fun findBackGround(color:String)= when (color) {
+    fun findBackGround(color: String) = when (color) {
         ColorMarks.WHITE.name -> R.drawable.cm_white
         ColorMarks.BLUE.name -> R.drawable.cm_blue
         ColorMarks.GREEN.name -> R.drawable.cm_green

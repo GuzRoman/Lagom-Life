@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.api.NetService
 import label.dev.lifelinetimer.model.db.DaoImpl
-import label.dev.lifelinetimer.model.models.dbmodels.ColorMarks
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.model.repository.RepositoryImpl
 
 class NoteAddViewModel(application: Application) : AndroidViewModel(application) {
@@ -27,8 +27,9 @@ class NoteAddViewModel(application: Application) : AndroidViewModel(application)
     private val repositoryImpl: RepositoryImpl
 
     init {
+        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
         val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(noteDao, NetService())
+        repositoryImpl = RepositoryImpl(taskDao,noteDao, NetService())
     }
 
     fun findBackGround(color:String)= when (color) {

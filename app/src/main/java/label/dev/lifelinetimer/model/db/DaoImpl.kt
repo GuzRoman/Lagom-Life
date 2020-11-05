@@ -4,13 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.SubTaskModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.SubTaskState
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskInfoModel
 
 
-@Database(entities = [NoteModel::class], version = 1)
-abstract class DaoImpl : RoomDatabase(){
+@Database(entities = [NoteModel::class, TaskInfoModel::class, SubTaskModel::class], version = 1, exportSchema = false)
+abstract class DaoImpl : RoomDatabase() {
 
-    abstract fun notesDao(): NotesDao
+    abstract fun taskDao(): TaskDao
+    abstract fun notesDao(): AppDao
 
     companion object {
         @Volatile

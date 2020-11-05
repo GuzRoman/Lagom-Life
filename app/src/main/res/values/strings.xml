@@ -12,4 +12,7 @@
     <string name="newsItemSubtitle">Subtitle</string>
     <string name="newsItemTitle">Title</string>
     <string name="newsItemContent">Content</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="timeWaste">Осталось дней:</string>
+    <string name="zero">0</string>
 </resources>

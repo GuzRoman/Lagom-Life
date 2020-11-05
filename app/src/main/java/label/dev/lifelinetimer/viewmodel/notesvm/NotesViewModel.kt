@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import label.dev.lifelinetimer.model.api.NetService
 import label.dev.lifelinetimer.model.db.DaoImpl
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.model.repository.RepositoryImpl
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
@@ -14,8 +14,9 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     var notesList: LiveData<List<NoteModel>>
 
     init {
-        val dao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(dao, NetService())
+        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
+        val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
+        repositoryImpl = RepositoryImpl(taskDao, noteDao, NetService())
         notesList = repositoryImpl.readAllNotes
     }
 

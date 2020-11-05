@@ -30,7 +30,11 @@
         android:id="@+id/tasksFragment"
         android:name="label.dev.lifelinetimer.view.fragments.tasks.TasksFragment"
         android:label="@string/tasks"
-        tools:layout="@layout/tasks_fragment" />
+        tools:layout="@layout/tasks_fragment" >
+        <action
+            android:id="@+id/action_tasksFragment_to_subtasksFragment"
+            app:destination="@id/subtasksFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="label.dev.lifelinetimer.view.fragments.vcrunews.NewsFragment"
@@ -59,7 +63,7 @@
             app:destination="@id/notesFragment" />
         <argument
             android:name="selectedItem"
-            app:argType="label.dev.lifelinetimer.model.models.dbmodels.NoteModel" />
+            app:argType="label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel" />
     </fragment>
     <fragment
         android:id="@+id/newsDetails"
@@ -72,5 +76,17 @@
         <argument
             android:name="selectedNews"
             app:argType="label.dev.lifelinetimer.model.models.apimodels.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/subtasksFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.tasks.SubtasksFragment"
+        android:label="subtasks_fragment"
+        tools:layout="@layout/subtasks_fragment" >
+        <action
+            android:id="@+id/action_subtasksFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <argument
+            android:name="selectedTask"
+            app:argType="label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel" />
     </fragment>
 </navigation>

@@ -2,11 +2,16 @@ package label.dev.lifelinetimer.model.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.SubTaskModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskInfoModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel
 
 
 @Dao
-interface NotesDao {
+interface AppDao {
+
+    //Notes
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun saveNote(note: NoteModel)

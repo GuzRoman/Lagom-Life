@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.noteredactor_fragment.*
 import kotlinx.android.synthetic.main.noteredactor_fragment.view.*
 import label.dev.lifelinetimer.R
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.view.dialogs.ColorMarkDialogFragment
 import label.dev.lifelinetimer.viewmodel.notesvm.NoteRedactorViewModel

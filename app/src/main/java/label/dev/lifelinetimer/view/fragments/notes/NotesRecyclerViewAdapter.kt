@@ -7,10 +7,9 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.note_item.view.*
-import kotlinx.android.synthetic.main.notes_fragment.view.*
 import label.dev.lifelinetimer.R
-import label.dev.lifelinetimer.model.models.dbmodels.ColorMarks
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 
 
 class NotesRecyclerViewAdapter: RecyclerView.Adapter<NotesRecyclerViewAdapter.NotesViewHolder>() {
