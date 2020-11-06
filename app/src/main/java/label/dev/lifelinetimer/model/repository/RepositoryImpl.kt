@@ -17,12 +17,13 @@ import label.dev.lifelinetimer.model.repository.interfaces.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class RepositoryImpl(private val taskDao: TaskDao, private val appDao: AppDao, private val netService: NetService) : NotesDaoRepository, TasksDaoRepository, TimeRepository,
-    MappersRepository, ApiRepository {
+class RepositoryImpl(private val taskDao: TaskDao,
+                     private val appDao: AppDao,
+                     private val netService: NetService) : Repository {
 
     //TaskDaoRepository
 
-    val readAllTasks = taskDao.readAllTasks()
+    override val readAllTasks = taskDao.readAllTasks()
 
     override suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>) {
         taskDao.addTask(taskInfo,subtasks)
@@ -39,7 +40,7 @@ class RepositoryImpl(private val taskDao: TaskDao, private val appDao: AppDao, p
 
     //NoteDaoRepository
 
-    val readAllNotes = noteMapSorterByDate(appDao.getAllNotes())
+    override val readAllNotes = noteMapSorterByDate(appDao.getAllNotes())
 
     override suspend fun deleteNote(note: NoteModel) {
         appDao.deleteNote(note)

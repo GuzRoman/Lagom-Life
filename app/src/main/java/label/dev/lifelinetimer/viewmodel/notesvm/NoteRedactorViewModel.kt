@@ -1,40 +1,29 @@
 package label.dev.lifelinetimer.viewmodel.notesvm
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import label.dev.lifelinetimer.R
-import label.dev.lifelinetimer.model.api.NetService
-import label.dev.lifelinetimer.model.db.DaoImpl
 import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
 import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
-import label.dev.lifelinetimer.model.repository.RepositoryImpl
+import label.dev.lifelinetimer.model.repository.interfaces.Repository
 
-class NoteRedactorViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val repositoryImpl: RepositoryImpl
-
-    init {
-        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
-        val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(taskDao, noteDao, NetService())
-    }
+class NoteRedactorViewModel(private val repository: Repository) : ViewModel() {
 
     fun updateTime(): String {
-        return repositoryImpl.getCurrentTime()
+        return repository.getCurrentTime()
     }
 
     fun updateNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.updateNote(note)
+            repository.updateNote(note)
         }
     }
 
     fun deleteNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.deleteNote(note)
+            repository.deleteNote(note)
         }
     }
 

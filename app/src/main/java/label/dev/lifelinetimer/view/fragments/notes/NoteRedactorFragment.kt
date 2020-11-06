@@ -17,8 +17,16 @@ import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.view.dialogs.ColorMarkDialogFragment
 import label.dev.lifelinetimer.viewmodel.notesvm.NoteRedactorViewModel
+import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NoteRedactorViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class NoteRedactorFragment : Fragment() {
+class NoteRedactorFragment : Fragment(), KodeinAware {
+    override val kodein: Kodein by closestKodein()
+
+    private val noteRedactorViewModelFactory: NoteRedactorViewModelFactory by instance<NoteRedactorViewModelFactory>()
 
     private val args by navArgs<NoteRedactorFragmentArgs>()
 
@@ -32,7 +40,7 @@ class NoteRedactorFragment : Fragment() {
 
         (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
 
-        noteRedactorViewModel = ViewModelProvider(this).get(NoteRedactorViewModel::class.java)
+        noteRedactorViewModel = ViewModelProvider(this, noteRedactorViewModelFactory).get(NoteRedactorViewModel::class.java)
 
         view.noteRedactorEDTitle.setText(args.selectedItem.noteTitle)
         view.noteRedactorEDSubtitle.setText(args.selectedItem.noteSubtitle)

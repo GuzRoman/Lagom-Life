@@ -1,35 +1,24 @@
 package label.dev.lifelinetimer.viewmodel.notesvm
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import label.dev.lifelinetimer.R
-import label.dev.lifelinetimer.model.api.NetService
-import label.dev.lifelinetimer.model.db.DaoImpl
 import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
 import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
-import label.dev.lifelinetimer.model.repository.RepositoryImpl
+import label.dev.lifelinetimer.model.repository.interfaces.Repository
 
-class NoteAddViewModel(application: Application) : AndroidViewModel(application) {
+class NoteAddViewModel(private val repository: Repository) : ViewModel() {
 
     fun saveNote(note: NoteModel){
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.saveNote(note)
+            repository.saveNote(note)
         }
     }
 
     fun getCurrentTime(): String{
-        return repositoryImpl.getCurrentTime()
-    }
-
-    private val repositoryImpl: RepositoryImpl
-
-    init {
-        val taskDao = DaoImpl.getDatabaseInstance(application).taskDao()
-        val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(taskDao,noteDao, NetService())
+        return repository.getCurrentTime()
     }
 
     fun findBackGround(color:String)= when (color) {

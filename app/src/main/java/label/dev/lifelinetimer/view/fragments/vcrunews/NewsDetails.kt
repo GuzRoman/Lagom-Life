@@ -1,6 +1,5 @@
 package label.dev.lifelinetimer.view.fragments.vcrunews
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,13 +12,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.newsdetails_fragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.view.MainActivity
-import label.dev.lifelinetimer.viewmodel.vcrunewsvm.NewsDetailsViewModel
 
 class NewsDetails : Fragment() {
 
     private val args by navArgs<NewsDetailsArgs>()
-
-    private lateinit var newsDetailsViewModel: NewsDetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

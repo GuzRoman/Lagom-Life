@@ -13,8 +13,16 @@ import kotlinx.android.synthetic.main.notes_fragment.*
 import kotlinx.android.synthetic.main.tasks_fragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.viewmodel.tasksvm.TasksViewModel
+import label.dev.lifelinetimer.viewmodel.vmfactories.task.TasksViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class TasksFragment : Fragment() {
+class TasksFragment : Fragment(), KodeinAware {
+    override val kodein: Kodein by closestKodein()
+
+    private val tasksViewModelFactory: TasksViewModelFactory by instance<TasksViewModelFactory>()
 
     private lateinit var taskViewModel: TasksViewModel
     private lateinit var taskRecyclerViewAdapter: TaskRecyclerViewAdapter

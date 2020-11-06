@@ -16,10 +16,18 @@ import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
 import label.dev.lifelinetimer.view.MainActivity
 import label.dev.lifelinetimer.view.dialogs.ColorMarkDialogFragment
 import label.dev.lifelinetimer.viewmodel.notesvm.NoteAddViewModel
+import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NoteAddViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class NoteAddFragment : Fragment() {
+class NoteAddFragment : Fragment(), KodeinAware {
+        override val kodein: Kodein by closestKodein()
 
-    private lateinit var noteAddViewModel: NoteAddViewModel
+        private val noteAddViewModelFactory: NoteAddViewModelFactory by instance<NoteAddViewModelFactory>()
+
+        private lateinit var noteAddViewModel: NoteAddViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +37,7 @@ class NoteAddFragment : Fragment() {
 
         (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
 
-        noteAddViewModel = ViewModelProvider(this).get(NoteAddViewModel::class.java)
+        noteAddViewModel = ViewModelProvider(this, noteAddViewModelFactory).get(NoteAddViewModel::class.java)
 
         view.noteSaveBTN.setOnClickListener {
             insertDataToDatabase()
