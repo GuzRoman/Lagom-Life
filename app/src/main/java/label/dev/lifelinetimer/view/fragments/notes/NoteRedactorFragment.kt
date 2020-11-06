@@ -40,6 +40,8 @@ class NoteRedactorFragment : Fragment(), KodeinAware {
 
         (requireActivity() as MainActivity).bottomNavigationView.visibility = View.GONE
 
+
+
         noteRedactorViewModel = ViewModelProvider(this, noteRedactorViewModelFactory).get(NoteRedactorViewModel::class.java)
 
         view.noteRedactorEDTitle.setText(args.selectedItem.noteTitle)

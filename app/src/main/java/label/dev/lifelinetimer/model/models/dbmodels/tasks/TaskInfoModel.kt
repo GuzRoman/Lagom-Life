@@ -23,6 +23,9 @@ data class TaskInfoModel(
     @ColumnInfo(name = TASKSINFO_ENDDATE)
     var endDate: String,
 
+    @ColumnInfo(name = TASKINFO_STARTDATE)
+    var startDate: String,
+
     @ColumnInfo(name = TASKSINFO_NOTDONESUBTASKS)
     var notDoneSubtasks: Int,
 
@@ -37,6 +40,7 @@ data class TaskInfoModel(
         const val TASKSINFO_TITLE = "tasksinfo_title"
         const val TASKSINFO_SUBTITLE = "tasksinfo_subtitle"
         const val TASKSINFO_ENDDATE = "tasksinfo_enddate"
+        const val TASKINFO_STARTDATE = "taskinfo_startdate"
         const val TASKSINFO_NOTDONESUBTASKS = "tasksinfo_notdonesubtasks"
         const val TASKSINFO_SUBTASKSCOUNT = "tasksinfo_subtaskscount"
     }

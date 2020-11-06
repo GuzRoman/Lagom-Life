@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.DialogFragmentNavigator
 import kotlinx.android.synthetic.main.colormark_dialogfragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
 
-class ColorMarkDialogFragment: DialogFragment(){
+class ColorMarkDialogFragment : DialogFragment() {
 
-    var onColorSelected: ((String) -> Unit?)? =null
+    var onColorSelected: ((String) -> Unit?)? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,

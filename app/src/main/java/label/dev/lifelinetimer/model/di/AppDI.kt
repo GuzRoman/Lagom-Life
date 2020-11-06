@@ -9,6 +9,7 @@ import label.dev.lifelinetimer.viewmodel.vmfactories.news.NewsViewModelFactory
 import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NoteAddViewModelFactory
 import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NoteRedactorViewModelFactory
 import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NotesViewModelFactory
+import label.dev.lifelinetimer.viewmodel.vmfactories.task.TaskAddViewModelFactory
 import label.dev.lifelinetimer.viewmodel.vmfactories.task.TasksViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -42,6 +43,7 @@ class AppDI : Application(), KodeinAware {
         bind() from provider { NewsViewModelFactory(instance()) }
         //Task
         bind() from provider { TasksViewModelFactory(instance()) }
+        bind() from provider { TaskAddViewModelFactory(instance()) }
 
     }
 

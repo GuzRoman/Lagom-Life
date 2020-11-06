@@ -90,5 +90,4 @@ class NoteAddFragment : Fragment(), KodeinAware {
         super.onDestroyView()
         (requireActivity() as MainActivity).bottomNavigationView.visibility = View.VISIBLE
     }
-
 }

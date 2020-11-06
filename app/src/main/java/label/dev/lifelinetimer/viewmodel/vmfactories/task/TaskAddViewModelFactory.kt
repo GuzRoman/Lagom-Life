@@ -1,14 +1,14 @@
-package label.dev.lifelinetimer.viewmodel.vmfactories.notes
+package label.dev.lifelinetimer.viewmodel.vmfactories.task
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import label.dev.lifelinetimer.model.repository.interfaces.Repository
-import label.dev.lifelinetimer.viewmodel.notesvm.NoteAddViewModel
+import label.dev.lifelinetimer.viewmodel.tasksvm.TaskAddViewModel
 
-class NoteAddViewModelFactory(private val repository: Repository) :
+class TaskAddViewModelFactory(private val repository: Repository) :
     ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return NoteAddViewModel(repository) as T
+        return TaskAddViewModel(repository) as T
     }
 }

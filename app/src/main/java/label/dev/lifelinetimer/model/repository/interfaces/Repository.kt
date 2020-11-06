@@ -21,9 +21,9 @@ interface Repository {
 
     //TaskDao
     val readAllTasks: LiveData<List<TaskModel>>
-    suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
-    suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
-    suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
+    suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
+    suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
+    suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
 
     //Time
     fun getCurrentTime(): String

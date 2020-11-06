@@ -9,15 +9,15 @@ import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel
 @Dao
 interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
+    suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
 
     @Transaction
     @Query("SELECT * FROM tasksinfo_tablename")
     fun readAllTasks(): LiveData<List<TaskModel>>
 
     @Delete
-    suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
+    suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
 
     @Update
-    suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>)
+    suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?)
 }

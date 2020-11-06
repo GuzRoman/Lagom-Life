@@ -25,15 +25,15 @@ class RepositoryImpl(private val taskDao: TaskDao,
 
     override val readAllTasks = taskDao.readAllTasks()
 
-    override suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>) {
+    override suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
         taskDao.addTask(taskInfo,subtasks)
     }
 
-    override suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>) {
+    override suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
         taskDao.deleteTask(taskInfo, subtasks)
     }
 
-    override suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>) {
+    override suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
         taskDao.updateTask(taskInfo, subtasks)
     }
 

@@ -36,10 +36,10 @@ class TaskRecyclerViewAdapter : RecyclerView.Adapter<TaskRecyclerViewAdapter.Tas
         holder.notDoneSubtasks.text =
             task.taskInfoModel!!.notDoneSubtasks.toString() + " / " + task.taskInfoModel!!.subtaskCount.toString()
 
-        holder.itemView.notesRawLayout.setOnClickListener {
-           val action = TasksFragmentDirections.actionTasksFragmentToSubtasksFragment(task)
-            holder.itemView.findNavController().navigate(action)
-        }
+//        holder.itemView.notesRawLayout.setOnClickListener {
+//           val action = TasksFragmentDirections.actionTasksFragmentToSubtasksFragment(task)
+//            holder.itemView.findNavController().navigate(action)
+//        }
     }
 
     fun setData(setNotes: List<TaskModel>) {

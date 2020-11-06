@@ -40,6 +40,9 @@
             app:destination="@id/subtasksFragment"
             app:enterAnim="@anim/from_bottom"
             app:exitAnim="@anim/from_top" />
+        <action
+            android:id="@+id/action_tasksFragment_to_taskRedactorFragment"
+            app:destination="@id/taskRedactorFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -104,5 +107,14 @@
         <argument
             android:name="selectedTask"
             app:argType="label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskRedactorFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.tasks.TaskAddFragment"
+        android:label="taskredactor_fragment"
+        tools:layout="@layout/taskadd_fragment" >
+        <action
+            android:id="@+id/action_taskRedactorFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
     </fragment>
 </navigation>
