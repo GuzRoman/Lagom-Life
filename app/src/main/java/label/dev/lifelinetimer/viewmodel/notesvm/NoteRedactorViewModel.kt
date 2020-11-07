@@ -1,43 +1,33 @@
 package label.dev.lifelinetimer.viewmodel.notesvm
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import label.dev.lifelinetimer.R
-import label.dev.lifelinetimer.model.api.NetService
-import label.dev.lifelinetimer.model.db.DaoImpl
-import label.dev.lifelinetimer.model.models.dbmodels.ColorMarks
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
-import label.dev.lifelinetimer.model.repository.RepositoryImpl
+import label.dev.lifelinetimer.model.models.dbmodels.notes.ColorMarks
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
+import label.dev.lifelinetimer.model.repository.interfaces.Repository
 
-class NoteRedactorViewModel(application: Application) : AndroidViewModel(application) {
+class NoteRedactorViewModel(private val repository: Repository) : ViewModel() {
 
-    private val repositoryImpl: RepositoryImpl
-
-    init {
-        val noteDao = DaoImpl.getDatabaseInstance(application).notesDao()
-        repositoryImpl = RepositoryImpl(noteDao, NetService())
+    fun updateTime(): String {
+        return repository.getCurrentTime()
     }
 
-    fun updateTime(): String{
-        return repositoryImpl.getCurrentTime()
-    }
-
-    fun updateNote(note: NoteModel){
+    fun updateNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.updateNote(note)
+            repository.updateNote(note)
         }
     }
 
-    fun deleteNote(note: NoteModel){
+    fun deleteNote(note: NoteModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repositoryImpl.deleteNote(note)
+            repository.deleteNote(note)
         }
     }
 
-    fun findBackGround(color:String)= when (color) {
+    fun findBackGround(color: String) = when (color) {
         ColorMarks.WHITE.name -> R.drawable.cm_white
         ColorMarks.BLUE.name -> R.drawable.cm_blue
         ColorMarks.GREEN.name -> R.drawable.cm_green

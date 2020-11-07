@@ -1,5 +1,6 @@
 package label.dev.lifelinetimer.view
 
+import android.app.Notification
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -27,5 +28,4 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
     }
-
 }

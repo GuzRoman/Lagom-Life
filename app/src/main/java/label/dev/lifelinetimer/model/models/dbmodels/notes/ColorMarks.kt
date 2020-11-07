@@ -1,4 +1,4 @@
-package label.dev.lifelinetimer.model.models.dbmodels
+package label.dev.lifelinetimer.model.models.dbmodels.notes
 
 enum class ColorMarks {
 

@@ -15,8 +15,16 @@ import kotlinx.android.synthetic.main.notes_fragment.*
 import kotlinx.android.synthetic.main.notes_fragment.view.*
 import label.dev.lifelinetimer.R
 import label.dev.lifelinetimer.viewmodel.notesvm.NotesViewModel
+import label.dev.lifelinetimer.viewmodel.vmfactories.notes.NotesViewModelFactory
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class NotesFragment : Fragment() {
+class NotesFragment : Fragment(), KodeinAware {
+    override val kodein: Kodein by closestKodein()
+
+    private val notesViewModelFactory: NotesViewModelFactory by instance<NotesViewModelFactory>()
 
     private lateinit var notesViewModel: NotesViewModel
     private lateinit var notesRecyclerViewAdapter: NotesRecyclerViewAdapter
@@ -30,15 +38,13 @@ class NotesFragment : Fragment() {
         val view = inflater.inflate(R.layout.notes_fragment, container, false)
 
         notesRecyclerViewAdapter = NotesRecyclerViewAdapter()
-        notesViewModel = ViewModelProvider(this).get(NotesViewModel::class.java)
+        notesViewModel = ViewModelProvider(this, notesViewModelFactory).get(NotesViewModel::class.java)
         gridLayoutManager = GridLayoutManager(requireContext(),2,LinearLayoutManager.VERTICAL, false)
         notesRecyclerView = view.notesRecyclerView
         notesRecyclerView.layoutManager = gridLayoutManager
         notesRecyclerView.setHasFixedSize(true)
         notesRecyclerView.adapter = notesRecyclerViewAdapter
-
         setData()
-
         return view
     }
 

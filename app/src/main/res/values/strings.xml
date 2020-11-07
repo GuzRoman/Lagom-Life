@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Life Line Planer</string>
+    <string name="app_name">Lagom Life</string>
     <string name="routine">Routine</string>
     <string name="tasks">Tasks</string>
     <string name="lifestats">Stats</string>
@@ -12,4 +12,7 @@
     <string name="newsItemSubtitle">Subtitle</string>
     <string name="newsItemTitle">Title</string>
     <string name="newsItemContent">Content</string>
+    <string name="subtitle">Subtitle</string>
+    <string name="timeWaste">Осталось дней:</string>
+    <string name="zero">0</string>
 </resources>

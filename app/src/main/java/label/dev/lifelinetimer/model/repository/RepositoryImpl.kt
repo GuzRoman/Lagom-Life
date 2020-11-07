@@ -6,33 +6,52 @@ import androidx.lifecycle.map
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import label.dev.lifelinetimer.model.api.NetService
-import label.dev.lifelinetimer.model.db.NotesDao
+import label.dev.lifelinetimer.model.db.AppDao
+import label.dev.lifelinetimer.model.db.TaskDao
 import label.dev.lifelinetimer.model.models.apimodels.NewsModel
-import label.dev.lifelinetimer.model.models.dbmodels.NoteModel
-import label.dev.lifelinetimer.model.repository.interfaces.ApiRepository
-import label.dev.lifelinetimer.model.repository.interfaces.NotesDaoRepository
-import label.dev.lifelinetimer.model.repository.interfaces.MappersRepository
-import label.dev.lifelinetimer.model.repository.interfaces.TimeRepository
+import label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.SubTaskModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskInfoModel
+import label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel
+import label.dev.lifelinetimer.model.repository.interfaces.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-class RepositoryImpl(private val notesDao: NotesDao, private val netService: NetService) : NotesDaoRepository, TimeRepository,
-    MappersRepository, ApiRepository {
+class RepositoryImpl(private val taskDao: TaskDao,
+                     private val appDao: AppDao,
+                     private val netService: NetService) : Repository {
+
+    //TaskDaoRepository
+
+    override val readAllTasks = taskDao.readAllTasks()
+
+    override suspend fun addTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
+        taskDao.addTask(taskInfo,subtasks)
+    }
+
+    override suspend fun deleteTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
+        taskDao.deleteTask(taskInfo, subtasks)
+    }
+
+    override suspend fun updateTask(taskInfo: TaskInfoModel, subtasks: List<SubTaskModel>?) {
+        taskDao.updateTask(taskInfo, subtasks)
+    }
+
 
     //NoteDaoRepository
 
-    val readAllNotes = noteMapSorterByDate(notesDao.getAllNotes())
+    override val readAllNotes = noteMapSorterByDate(appDao.getAllNotes())
 
     override suspend fun deleteNote(note: NoteModel) {
-        notesDao.deleteNote(note)
+        appDao.deleteNote(note)
     }
 
     override suspend fun updateNote(note: NoteModel) {
-        notesDao.updateNote(note)
+        appDao.updateNote(note)
     }
 
     override suspend fun saveNote(note: NoteModel) {
-        notesDao.saveNote(note)
+        appDao.saveNote(note)
     }
 
     //TimeRepository

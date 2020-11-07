@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragments.notes.NoteAddFragment"
-    android:background="@color/theme_darkblue">
+    android:background="@drawable/bg_dialog">
 
     <EditText
         android:id="@+id/noteEDTitle"

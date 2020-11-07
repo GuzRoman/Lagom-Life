@@ -1,4 +1,4 @@
-package label.dev.lifelinetimer.model.models.dbmodels
+package label.dev.lifelinetimer.model.models.dbmodels.notes
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity (tableName = NoteModel.NOTE_TABLENAME)
+@Entity(tableName = NoteModel.NOTE_TABLENAME)
 class NoteModel(
 
     @PrimaryKey(autoGenerate = true)

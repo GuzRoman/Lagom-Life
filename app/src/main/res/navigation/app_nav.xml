@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/routineFragment">
+    app:startDestination="@id/notesFragment">
     <fragment
         android:id="@+id/routineFragment"
         android:name="label.dev.lifelinetimer.view.fragments.routine.RoutineFragment"
@@ -21,16 +21,29 @@
         tools:layout="@layout/notes_fragment" >
         <action
             android:id="@+id/action_notesFragment_to_notesDetailsFragment"
-            app:destination="@id/notesDetailsFragment" />
+            app:destination="@id/notesDetailsFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
         <action
             android:id="@+id/action_notesFragment_to_noteRedactorFragment"
-            app:destination="@id/noteRedactorFragment" />
+            app:destination="@id/noteRedactorFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
     </fragment>
     <fragment
         android:id="@+id/tasksFragment"
         android:name="label.dev.lifelinetimer.view.fragments.tasks.TasksFragment"
         android:label="@string/tasks"
-        tools:layout="@layout/tasks_fragment" />
+        tools:layout="@layout/tasks_fragment" >
+        <action
+            android:id="@+id/action_tasksFragment_to_subtasksFragment"
+            app:destination="@id/subtasksFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/from_top" />
+        <action
+            android:id="@+id/action_tasksFragment_to_taskRedactorFragment"
+            app:destination="@id/taskRedactorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newsFragment"
         android:name="label.dev.lifelinetimer.view.fragments.vcrunews.NewsFragment"
@@ -38,7 +51,9 @@
         tools:layout="@layout/vcrnews_fragment" >
         <action
             android:id="@+id/action_newsFragment_to_newsDetails"
-            app:destination="@id/newsDetails" />
+            app:destination="@id/newsDetails"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
     </fragment>
     <fragment
         android:id="@+id/notesDetailsFragment"
@@ -47,7 +62,9 @@
         tools:layout="@layout/noteadd_fragment" >
         <action
             android:id="@+id/action_notesDetailsFragment_to_notesFragment"
-            app:destination="@id/notesFragment" />
+            app:destination="@id/notesFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
     </fragment>
     <fragment
         android:id="@+id/noteRedactorFragment"
@@ -56,10 +73,12 @@
         tools:layout="@layout/noteredactor_fragment" >
         <action
             android:id="@+id/action_noteRedactorFragment_to_notesFragment"
-            app:destination="@id/notesFragment" />
+            app:destination="@id/notesFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
         <argument
             android:name="selectedItem"
-            app:argType="label.dev.lifelinetimer.model.models.dbmodels.NoteModel" />
+            app:argType="label.dev.lifelinetimer.model.models.dbmodels.notes.NoteModel" />
     </fragment>
     <fragment
         android:id="@+id/newsDetails"
@@ -68,9 +87,34 @@
         tools:layout="@layout/newsdetails_fragment" >
         <action
             android:id="@+id/action_newsDetails_to_newsFragment"
-            app:destination="@id/newsFragment" />
+            app:destination="@id/newsFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
         <argument
             android:name="selectedNews"
             app:argType="label.dev.lifelinetimer.model.models.apimodels.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/subtasksFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.tasks.SubtasksFragment"
+        android:label="subtasks_fragment"
+        tools:layout="@layout/subtasks_fragment" >
+        <action
+            android:id="@+id/action_subtasksFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment"
+            app:enterAnim="@anim/from_bottom"
+            app:exitAnim="@anim/to_top" />
+        <argument
+            android:name="selectedTask"
+            app:argType="label.dev.lifelinetimer.model.models.dbmodels.tasks.TaskModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskRedactorFragment"
+        android:name="label.dev.lifelinetimer.view.fragments.tasks.TaskAddFragment"
+        android:label="taskredactor_fragment"
+        tools:layout="@layout/taskadd_fragment" >
+        <action
+            android:id="@+id/action_taskRedactorFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
     </fragment>
 </navigation>
