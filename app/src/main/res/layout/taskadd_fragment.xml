@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragments.tasks.TaskAddFragment"
-    android:background="@color/theme_darkblue">
+    android:background="@drawable/bg_dialog">
 
     <EditText
         android:id="@+id/taskdialogSetTitle"

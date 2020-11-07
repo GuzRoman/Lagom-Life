@@ -44,9 +44,7 @@ class NotesFragment : Fragment(), KodeinAware {
         notesRecyclerView.layoutManager = gridLayoutManager
         notesRecyclerView.setHasFixedSize(true)
         notesRecyclerView.adapter = notesRecyclerViewAdapter
-
         setData()
-
         return view
     }
 

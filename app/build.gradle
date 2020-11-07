@@ -104,4 +104,7 @@ dependencies {
     //Kodein
     implementation "org.kodein.di:kodein-di-generic-jvm:5.2.0"
     implementation "org.kodein.di:kodein-di-framework-android-x:5.2.0"
+
+    //Drag & Drop n' Swipe Recyclerview
+    implementation 'com.ernestoyaquello.dragdropswiperecyclerview:drag-drop-swipe-recyclerview:0.6.0'
 }

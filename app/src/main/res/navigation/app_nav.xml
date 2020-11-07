@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/routineFragment">
+    app:startDestination="@id/notesFragment">
     <fragment
         android:id="@+id/routineFragment"
         android:name="label.dev.lifelinetimer.view.fragments.routine.RoutineFragment"

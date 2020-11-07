@@ -25,12 +25,15 @@ import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
-class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener , KodeinAware{
+class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener, KodeinAware {
     override val kodein: Kodein by closestKodein()
 
     private val taskAddViewModelFactory: TaskAddViewModelFactory by instance<TaskAddViewModelFactory>()
+    private val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss")
 
     private lateinit var taskAddViewModel: TaskAddViewModel
 
@@ -55,7 +58,8 @@ class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener , KodeinA
             DatePickerDialog(requireContext(), this, year, month, day).show()
         }
 
-        taskAddViewModel = ViewModelProvider(this, taskAddViewModelFactory).get(TaskAddViewModel::class.java)
+        taskAddViewModel =
+            ViewModelProvider(this, taskAddViewModelFactory).get(TaskAddViewModel::class.java)
 
         view.taskDialogViewSaveBTN.setOnClickListener {
             insertDataToDatabase()
@@ -64,15 +68,25 @@ class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener , KodeinA
         return view
     }
 
-    private fun insertDataToDatabase(){
+    private fun insertDataToDatabase() {
         val taskTitle = taskdialogSetTitle.text.toString()
         val taskSubtitle = taskdialogSetSubtitle.text.toString()
         val taskEndDate = taskdialogTime.text.toString()
 
-        if (taskTitle.isEmpty() || taskEndDate.isEmpty() || taskSubtitle.isEmpty()){
+        if (taskTitle.isEmpty() || taskEndDate.isEmpty() || taskSubtitle.isEmpty()) {
             Toast.makeText(requireContext(), "Заполните все поля", Toast.LENGTH_SHORT).show()
-        } else{
-            val task = TaskModel(TaskInfoModel(0, taskTitle, taskSubtitle, taskEndDate, getCurrentDate(), 0, 0))
+        } else {
+            val task = TaskModel(
+                TaskInfoModel(
+                    0,
+                    taskTitle,
+                    taskSubtitle,
+                    taskEndDate,
+                    getCurrentDate(),
+                    0,
+                    0
+                )
+            )
             saveTask(task)
             Toast.makeText(requireContext(), "Заметка сохранена", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_taskRedactorFragment_to_tasksFragment)
@@ -81,7 +95,7 @@ class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener , KodeinA
 
     private fun getCurrentDate() = taskAddViewModel.getCurrentTime()
 
-    private fun saveTask(task: TaskModel){
+    private fun saveTask(task: TaskModel) {
         taskAddViewModel.saveTask(task)
     }
 
@@ -91,10 +105,15 @@ class TaskAddFragment : Fragment(), DatePickerDialog.OnDateSetListener , KodeinA
         savedMonth = month + 1
         savedYear = year
 
-        taskdialogTime.text = "$savedDay.$savedMonth.$savedYear"
+        taskdialogTime.text = formatTimeToString(LocalDateTime.of(savedYear, savedMonth, savedDay, 0, 0, 0, 0))
     }
 
-    private fun getDateTimeCalendar(){
+    private fun formatTimeToString(time: LocalDateTime): String {
+        val formattedTimeToString = time.format(formatter).toString()
+        return formattedTimeToString
+    }
+
+    private fun getDateTimeCalendar() {
         val cal = Calendar.getInstance()
         day = cal.get(Calendar.DAY_OF_MONTH)
         month = cal.get(Calendar.MONTH)

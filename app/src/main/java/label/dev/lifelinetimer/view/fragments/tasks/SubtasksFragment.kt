@@ -11,10 +11,6 @@ import label.dev.lifelinetimer.viewmodel.tasksvm.SubtasksViewModel
 
 class SubtasksFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SubtasksFragment()
-    }
-
     private lateinit var viewModel: SubtasksViewModel
 
     override fun onCreateView(
